@@ -31,7 +31,7 @@ export HYPRIOT_IMAGE_VERSION
 
 # download the ready-made raw image for the RPi
 if [ ! -f "${BUILD_RESULT_PATH}/${RAW_IMAGE}.zip" ]; then
-  wget -q -O "${BUILD_RESULT_PATH}/${RAW_IMAGE}.zip" "https://github.com/hypriot/image-builder-raw/releases/download/${RAW_IMAGE_VERSION}/${RAW_IMAGE}.zip"
+  wget -q -O "${BUILD_RESULT_PATH}/${RAW_IMAGE}.zip" "https://github.com/barthel/hypriot-image-builder-raw/releases/download/${RAW_IMAGE_VERSION}/${RAW_IMAGE}.zip"
 fi
 
 # verify checksum of the ready-made raw image
@@ -49,7 +49,7 @@ mkdir ${BUILD_PATH}
 
 # download our base root file system
 if [ ! -f "${ROOTFS_TAR_PATH}" ]; then
-  wget -q -O "${ROOTFS_TAR_PATH}" "https://github.com/hypriot/os-rootfs/releases/download/${HYPRIOT_OS_VERSION}/${ROOTFS_TAR}"
+  wget -q -O "${ROOTFS_TAR_PATH}" "https://github.com/barthel/hypriot-os-rootfs/releases/download/${HYPRIOT_OS_VERSION}/${ROOTFS_TAR}"
 fi
 
 # verify checksum of our root filesystem

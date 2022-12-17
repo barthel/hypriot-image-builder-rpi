@@ -1,16 +1,13 @@
 # image-builder-rpi
 
-[![Join the chat at https://gitter.im/hypriot/talk](https://badges.gitter.im/hypriot/talk.svg)](https://gitter.im/hypriot/talk?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://circleci.com/gh/hypriot/image-builder-rpi.svg?style=svg)](https://circleci.com/gh/hypriot/image-builder-rpi)
-[![Latest Release](https://img.shields.io/github/downloads/hypriot/image-builder-rpi/v1.12.1/total.svg)](https://github.com/hypriot/image-builder-rpi/releases/tag/v1.12.1)
-[![All Releases](https://img.shields.io/github/downloads/hypriot/image-builder-rpi/total.svg)](https://github.com/hypriot/image-builder-rpi/releases)
+[![Build Status](https://circleci.com/gh/barthel/hypriot-image-builder-rpi.svg?style=svg)](https://circleci.com/gh/barthel/hypriot-builder-rpi)
 
 This repo builds the SD card image with HypriotOS for the Raspberry Pi 1, 2, 3, 4
 and Zero. You can find released versions of the SD card image here in the GitHub
 releases page. To build this SD card image we have to
 
-* take the files for the root filesystem from [`os-rootfs`](https://github.com/hypriot/os-rootfs)
-* take the empty raw filesystem from [`image-builder-raw`](https://github.com/hypriot/image-builder-raw) with the two partitions
+* take the files for the root filesystem from [`hypriot-os-rootfs`](https://github.com/barthel/hypriot-os-rootfs)
+* take the empty raw filesystem from [`hypriot-image-builder-raw`](https://github.com/barthel/hypriot-image-builder-raw) with the two partitions
 * add Hypriot's Debian repos
 * install the Raspberry Pi kernel from [`rpi-kernel`](https://github.com/hypriot/rpi-kernel)
 * install Docker tools Docker Engine, Docker Compose and Docker Machine
