@@ -19,16 +19,16 @@ function clean_print(){
     echo "${KEYID_short}"
   elif [[ "${func}" == "print" ]]; then
     if [[ "${fingerprint}" != "${nospaces}" ]]; then
-      printf "%-10s %50s\n" fpr: "${fingerprint}"
+      printf "%-10s %50s\\n" fpr: "${fingerprint}"
     fi
     # if [[ "${nospaces}" != "${tolowercase}" ]]; then
-    #   printf "%-10s %50s\n" nospaces: $nospaces
+    #   printf "%-10s %50s\\n" nospaces: $nospaces
     # fi
     if [[ "${tolowercase}" != "${KEYID_long}" ]]; then
-      printf "%-10s %50s\n" lower: "${tolowercase}"
+      printf "%-10s %50s\\n" lower: "${tolowercase}"
     fi
-    printf "%-10s %50s\n" long: "${KEYID_long}"
-    printf "%-10s %50s\n" short: "${KEYID_short}"
+    printf "%-10s %50s\\n" long: "${KEYID_long}"
+    printf "%-10s %50s\\n" short: "${KEYID_short}"
     echo ""
   else
     echo "usage: function {print|fpr|long|short} GPGKEY"
@@ -141,7 +141,7 @@ else
 fi
 
 # enable serial console
-printf "# Spawn a getty on Raspberry Pi serial line\nT0:23:respawn:/sbin/getty -L ttyAMA0 115200 vt100\n" >> /etc/inittab
+printf "# Spawn a getty on Raspberry Pi serial line\\nT0:23:respawn:/sbin/getty -L ttyAMA0 115200 vt100\\n" >> /etc/inittab
 
 # boot/cmdline.txt
 echo "dwc_otg.lpm_enable=0 console=serial0,115200 console=tty1 root=PARTUUID=${IMAGE_PARTUUID_PREFIX}-02 rootfstype=ext4 cgroup_enable=cpuset cgroup_enable=memory swapaccount=1 elevator=deadline fsck.repair=yes rootwait quiet init=/usr/lib/raspi-config/init_resize.sh" > /boot/cmdline.txt
