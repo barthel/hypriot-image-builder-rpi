@@ -91,12 +91,12 @@ rm -rf ${BUILD_PATH:?}/{dev,sys,proc}/*
 
 tar -czf /image_with_kernel_boot.tar.gz -C ${BUILD_PATH}/boot .
 du -sh ${BUILD_PATH}/boot
-rm -Rf ${BUILD_PATH:?}/boot
-tar -czf /image_with_kernel_root.tar.gz -C ${BUILD_PATH} .
+tar --exclude='boot' -czf /image_with_kernel_root.tar.gz -C ${BUILD_PATH} .
 du -sh ${BUILD_PATH}
 ls -alh /image_with_kernel_*.tar.gz
 
 # create the image and add root base filesystem
+export LIBGUESTFS_DEBUG=1 LIBGUESTFS_TRACE=1
 guestfish -a "${BUILD_RESULT_PATH}/${HYPRIOT_IMAGE_NAME}"<<_EOF_
   run
   #import filesystem content

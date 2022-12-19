@@ -6,6 +6,8 @@ RUN apt-get update && \
     qemu \
     qemu-user-static \
     xxd \
+    # install kernel required by guestfish/supermin
+    "linux-image-$(dpkg --print-architecture)" \
     --no-install-recommends && \
     rm -rf /var/lib/apt/lists/*
 
