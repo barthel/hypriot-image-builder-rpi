@@ -227,11 +227,12 @@ systemctl mask systemd-resolved
 
 # Install Docker via convenient script
 # @see: https://docs.docker.com/engine/install/debian/#install-using-the-convenience-script
+echo "Installing Docker and Docker compose script"
 curl -fsSL https://get.docker.com -o get-docker.sh
 # start Docker install with empty environment because of defined VERSION env variable
 env -i sh ./get-docker.sh
-
 docker -v
+echo 'docker compose --compatibility "$@"' | tee -a usr/local/bin/docker-compose && chmod +x usr/local/bin/docker-compose
 
 # install bash completion for Docker Compose
 curl -sSL "https://raw.githubusercontent.com/docker/compose/1.29.2/contrib/completion/bash/docker-compose" -o /etc/bash_completion.d/docker-compose
