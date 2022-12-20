@@ -89,19 +89,20 @@ umount -l ${BUILD_PATH}/sys
 # ensure that there are no leftover artifacts in the pseudo filesystems
 rm -rf ${BUILD_PATH:?}/{dev,sys,proc}/*
 
-tar -czf /image_with_kernel_boot.tar.gz -C ${BUILD_PATH}/boot .
+tar -czf /image_with_kernel_boot.tar.gz -C ${BUILD_PATH}/boot . # BOOT
 du -sh ${BUILD_PATH}/boot
-tar --exclude='boot' -czf /image_with_kernel_root.tar.gz -C ${BUILD_PATH} .
+tar --exclude=boot -czf /image_with_kernel_root.tar.gz -C ${BUILD_PATH} . # ROOT w/o /boot
 du -sh ${BUILD_PATH}
 ls -alh /image_with_kernel_*.tar.gz
 
 # create the image and add root base filesystem
-export LIBGUESTFS_DEBUG=1 LIBGUESTFS_TRACE=1
+# export LIBGUESTFS_DEBUG=1 # LIBGUESTFS_TRACE=1
 guestfish -a "${BUILD_RESULT_PATH}/${HYPRIOT_IMAGE_NAME}"<<_EOF_
   run
   #import filesystem content
   mount /dev/sda2 /
   tar-in /image_with_kernel_root.tar.gz / compress:gzip
+  fsck vfat /dev/sda1
   mkdir /boot
   mount /dev/sda1 /boot
   tar-in /image_with_kernel_boot.tar.gz /boot compress:gzip

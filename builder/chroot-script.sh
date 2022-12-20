@@ -228,13 +228,12 @@ systemctl mask systemd-resolved
 # Install Docker via convenient script
 # @see: https://docs.docker.com/engine/install/debian/#install-using-the-convenience-script
 curl -fsSL https://get.docker.com -o get-docker.sh
-chmod +x get-docker.sh
-./get-docker.sh
+sh ./get-docker.sh
 
 docker -v
 
 # install bash completion for Docker Compose
-curl -sSL "https://raw.githubusercontent.com/docker/compose/${DOCKER_COMPOSE_VERSION}/contrib/completion/bash/docker-compose" -o /etc/bash_completion.d/docker-compose
+curl -sSL "https://raw.githubusercontent.com/docker/compose/1.29.2/contrib/completion/bash/docker-compose" -o /etc/bash_completion.d/docker-compose
 
 # install bash completion for Docker CLI
 curl -sSL https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/bash/docker -o /etc/bash_completion.d/docker
