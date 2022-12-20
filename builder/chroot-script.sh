@@ -228,7 +228,8 @@ systemctl mask systemd-resolved
 # Install Docker via convenient script
 # @see: https://docs.docker.com/engine/install/debian/#install-using-the-convenience-script
 curl -fsSL https://get.docker.com -o get-docker.sh
-sh ./get-docker.sh
+# start Docker install with empty environment because of defined VERSION env variable
+env -i sh ./get-docker.sh
 
 docker -v
 
